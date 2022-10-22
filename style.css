@@ -101,6 +101,10 @@ img {
     gap: 15px;
 }
 
+.card-container {
+
+}
+
 .closed {
     display: none;
 }
@@ -112,12 +116,12 @@ img {
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    margin-bottom: 10px;
     box-shadow: 1px 1px 1px rgba(0,0,0,.2);
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
 
-    transition: all linear 1s;
-    transform-style: preserve-3d;
+    
 }
 
 .opened-card-container {
@@ -134,7 +138,10 @@ img {
     }
 
     .card-main-container {
-        margin-left: 109px;
-        margin-right: 109px;
+        flex-direction: column;
+        //justify-content: center; 
+        align-items: center;
+        //margin-left: 109px;
+        //margin-right: 109px;
     }
 }
