@@ -102,33 +102,45 @@ img {
 }
 
 .card-container {
-
-}
-
-.closed {
-    display: none;
+    width: 117px;
+    height: 146px;
+    position: relative;
 }
 
 .closed-card-container {
-    width: 117px;
-    height: 146px;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 600ms;
+    tranform-style: preserve-3d;  
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 1px 1px 1px rgba(0,0,0,.2);
     background-color: #A7E9AF;
-    border: 1px solid #99CEA8;
-
-    
-}
-
-.opened-card-container {
-    transform: rotateY(180deg);
+    border: 1px solid #99CEA8;      
 }
 
 /* MAIN CONTAINER END */
+
+/* ANIMATIONS */
+
+.back-card {
+    transform: rotateY(180deg);
+}
+
+.card-container .front-to-back {
+    transform: rotateY(0deg);
+}
+
+.card-container .front-to-front {
+    transform: rotateY(-180deg);
+}
+
+/* ANIMATIONS END */
 
 /* MOBILE */
 
