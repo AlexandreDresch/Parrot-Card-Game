@@ -40,7 +40,7 @@ let clock;
 let cardCount;
 
 // Initialize settings
-gameSettings()
+gameSettings();
 
 function gameSettings() {
     // Choose number of linked cards
@@ -70,24 +70,24 @@ function gameSettings() {
                         <img src="/assets/${gifList[i]}" class="">
                     </div>
                 </div>
-            `
+            `;
 
             // Add card to array
             cardsSelectedToDisplay.push(toPrint);
-        }
-    }
+        };
+    };
 
     // Shuffles the selected cards
     cardsSelectedToDisplay.sort(comparator);
 
     // For to display the cards
     for (let i = 0; i < cardsSelectedToDisplay.length; i++) {
-        divForCards.innerHTML += cardsSelectedToDisplay[i]
-    }
+        divForCards.innerHTML += cardsSelectedToDisplay[i];
+    };
 
     // Start the game time counter
     clock = setInterval(startTimer, 1000);
-}
+};
 
 // Function to finish or restart the game
 function gameOver() {
@@ -110,7 +110,7 @@ function gameOver() {
             // If the player chose to play again ...
             if (tryAgain === 'sim') {
                 // ... increment the auxiliary variable ...
-                playAgain++
+                playAgain++;
 
                 // ... and restart the page
                 document.location.reload(true);
@@ -118,29 +118,31 @@ function gameOver() {
             // If the player chose to not play again ...
             } else if (tryAgain === 'não'){
                 // ... increment the auxiliary variable ...
-                playAgain++
+                playAgain++;
 
                 // Says goodbye to the user
-                alert("Espero que você tenha se divertido c:")
-            }
-        }        
-    }
-}
+                alert("Fim de jogo! Espero que você tenha se divertido c:");
+            };
+        };     
+    };
+};
 
 // Function to count the game time
 function startTimer() {
+    // Increments the play counter
     timer++;
-    // implement timer on screen
-}
+
+    // Shows the time on the screen
+    document.querySelector('.timer-container').innerHTML = `TEMPO ${timer}s`;
+};
 
 // Function to shuffle the cards and gif list
 function comparator() {
     return Math.random() - 0.5;
-}
+};
 
 // Function to get the card clicked by the player
 function clicked(cardClicked) {
-    alert('test clicked card');
     // Checks if the clicked card is not already a flipped card
     let verifyPair = cardClicked.classList.contains('upturned-card');
 
@@ -150,13 +152,12 @@ function clicked(cardClicked) {
         if (selectedCardsInGameCounter < 2) {
             // ... allows the click and calls the function to verify if the card is available
             allowClick(cardClicked);
-        }
-    }
-}
+        };
+    };
+};
 
 // Function to verify if the card is available
 function allowClick(cardClicked) {
-    alert('entered allowClick')
     // Takes te card for verification
     let verifySelected = cardClicked.classList.contains('selected');
 
@@ -177,8 +178,7 @@ function allowClick(cardClicked) {
 
         // Increments the play counter
         playsCounter++;
-        console.log(selectedCardsInGameCounter)
-    }
+    };
 
     // Checks if the selected cards counter is equal to two cards
     if (selectedCardsInGameCounter === 2) {
@@ -187,12 +187,11 @@ function allowClick(cardClicked) {
 
         // Reset the selected cards counter
         selectedCardsInGameCounter = 0;
-    }
-}
+    };
+};
 
 // Function to check if the cards are from the same pair
 function handleCardComparison() {
-    alert('entered card comparison')
     // Take all selected cards
     let selectedCards = document.querySelectorAll('.selected');
 
@@ -202,29 +201,24 @@ function handleCardComparison() {
         for (let i = 0; i < selectedCards.length; i++) {
             selectedCards[i].classList.remove('selected');
             selectedCards[i].classList.add('upturned-card');
-        }
-        console.log('equal');
+        };
 
         // Increments the face-up card counter
         upturnedCards = upturnedCards + 2;
-        console.log(cardCount + 'total')
-        console.log(upturnedCards + 'viradas')
 
         // Reset the repetition counter
         repetitionCount = 0;
     } else {
         // Goes to the turn cards function
-        setTimeout(turnCards, 1000)
-    }
+        setTimeout(turnCards, 1000);
+    };
 
     // Goes to the game over function
-    setTimeout(gameOver, 800)
-    console.log(repetitionCount)
-}
+    setTimeout(gameOver, 800);
+};
 
 // Function to turn cards
 function turnCards() {
-    alert('entered turnCards')
     // Take all selected cards
     let selectedCards = document.querySelectorAll('.selected');
 
@@ -234,17 +228,12 @@ function turnCards() {
         let frontCard = document.querySelector('.selected .front-card');
         let backCard = document.querySelector('.selected .back-card');
 
-        console.log(frontCard)
         // Flip the card
         frontCard.classList.remove('front-to-front');
         backCard.classList.remove('front-to-back'); 
         selectedCards[i].classList.remove('selected');
-    }
+    };
 
     // Reset the repetition counter
     repetitionCount = 0;
-}
-
-
-
-
+};
